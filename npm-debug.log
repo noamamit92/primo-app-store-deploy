@@ -1,0 +1,191 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Users\\noama\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'publish',
+1 verbose cli   'primo-explore-app-store' ]
+2 info using npm@3.3.12
+3 info using node@v6.9.4
+4 verbose publish [ 'primo-explore-app-store' ]
+5 silly cache add args [ 'primo-explore-app-store', null ]
+6 verbose cache add spec primo-explore-app-store
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: 'primo-explore-app-store',
+7 silly cache add   scope: null,
+7 silly cache add   name: 'primo-explore-app-store',
+7 silly cache add   rawSpec: '',
+7 silly cache add   spec: '*',
+7 silly cache add   type: 'range' }
+8 silly addNamed primo-explore-app-store@*
+9 verbose addNamed "*" is a valid semver range for primo-explore-app-store
+10 silly addNameRange { name: 'primo-explore-app-store', range: '*', hasData: false }
+11 silly mapToRegistry name primo-explore-app-store
+12 silly mapToRegistry using default registry
+13 silly mapToRegistry registry https://registry.npmjs.org/
+14 silly mapToRegistry uri https://registry.npmjs.org/primo-explore-app-store
+15 verbose addNameRange registry:https://registry.npmjs.org/primo-explore-app-store not in flight; fetching
+16 verbose request uri https://registry.npmjs.org/primo-explore-app-store
+17 verbose request no auth needed
+18 info attempt registry request try #1 at 10:30:47 AM
+19 verbose request using bearer token for auth
+20 verbose request id 784c38235d67fd3e
+21 http request GET https://registry.npmjs.org/primo-explore-app-store
+22 http 200 https://registry.npmjs.org/primo-explore-app-store
+23 verbose headers { server: 'nginx/1.10.1',
+23 verbose headers   'content-type': 'application/json',
+23 verbose headers   'last-modified': 'Wed, 01 Nov 2017 08:28:30 GMT',
+23 verbose headers   etag: 'W/"59f985ae-2740"',
+23 verbose headers   'content-encoding': 'gzip',
+23 verbose headers   'cache-control': 'max-age=300',
+23 verbose headers   'transfer-encoding': 'chunked',
+23 verbose headers   'accept-ranges': 'bytes',
+23 verbose headers   date: 'Wed, 01 Nov 2017 08:30:48 GMT',
+23 verbose headers   via: '1.1 varnish',
+23 verbose headers   connection: 'keep-alive',
+23 verbose headers   'x-served-by': 'cache-lhr6336-LHR',
+23 verbose headers   'x-cache': 'MISS',
+23 verbose headers   'x-cache-hits': '0',
+23 verbose headers   'x-timer': 'S1509525048.175434,VS0,VE15',
+23 verbose headers   vary: 'Accept-Encoding, Accept' }
+24 silly get cb [ 200,
+24 silly get   { server: 'nginx/1.10.1',
+24 silly get     'content-type': 'application/json',
+24 silly get     'last-modified': 'Wed, 01 Nov 2017 08:28:30 GMT',
+24 silly get     etag: 'W/"59f985ae-2740"',
+24 silly get     'content-encoding': 'gzip',
+24 silly get     'cache-control': 'max-age=300',
+24 silly get     'transfer-encoding': 'chunked',
+24 silly get     'accept-ranges': 'bytes',
+24 silly get     date: 'Wed, 01 Nov 2017 08:30:48 GMT',
+24 silly get     via: '1.1 varnish',
+24 silly get     connection: 'keep-alive',
+24 silly get     'x-served-by': 'cache-lhr6336-LHR',
+24 silly get     'x-cache': 'MISS',
+24 silly get     'x-cache-hits': '0',
+24 silly get     'x-timer': 'S1509525048.175434,VS0,VE15',
+24 silly get     vary: 'Accept-Encoding, Accept' } ]
+25 verbose get saving primo-explore-app-store to C:\Users\noama\AppData\Roaming\npm-cache\registry.npmjs.org\primo-explore-app-store\.cache.json
+26 silly addNameRange number 2 { name: 'primo-explore-app-store', range: '*', hasData: true }
+27 silly addNameRange versions [ 'primo-explore-app-store', [ '0.0.1' ] ]
+28 silly addNamed primo-explore-app-store@0.0.1
+29 verbose addNamed "0.0.1" is a plain semver version for primo-explore-app-store
+30 silly cache afterAdd primo-explore-app-store@0.0.1
+31 verbose afterAdd C:\Users\noama\AppData\Roaming\npm-cache\primo-explore-app-store\0.0.1\package\package.json not in flight; writing
+32 verbose afterAdd C:\Users\noama\AppData\Roaming\npm-cache\primo-explore-app-store\0.0.1\package\package.json written
+33 silly publish { name: 'primo-explore-app-store',
+33 silly publish   version: '0.0.1',
+33 silly publish   description: 'The Exlibris Primo Open Discovery Framework',
+33 silly publish   author: { name: 'noamamit92' },
+33 silly publish   devDependencies:
+33 silly publish    { express: '4.16.0',
+33 silly publish      'require-npm': '1.4.1',
+33 silly publish      'body-parser': '1.18.2',
+33 silly publish      angular: '1.6.3',
+33 silly publish      'angular-animate': '1.6.3',
+33 silly publish      'angular-aria': '1.6.3',
+33 silly publish      'gulp-live-server': '0.0.31',
+33 silly publish      'angular-material': '^1.1.3',
+33 silly publish      unzip: '^0.1.11',
+33 silly publish      'babel-plugin-transform-html-import-to-string': '0.0.1',
+33 silly publish      'babel-preset-es2015': '6.6.0',
+33 silly publish      babelify: '7.3.0',
+33 silly publish      bluebird: '3.3.1',
+33 silly publish      'browser-sync': '2.9.9',
+33 silly publish      browserify: '13.1.1',
+33 silly publish      'concat-stream': '1.5.1',
+33 silly publish      'connect-modrewrite': '0.8.2',
+33 silly publish      css: '2.2.1',
+33 silly publish      'css-color-extractor': '0.0.4',
+33 silly publish      'css-color-extractor-cli': '0.0.1',
+33 silly publish      del: '2.2.1',
+33 silly publish      glob: '6.0.4',
+33 silly publish      gulp: '3.9.1',
+33 silly publish      'gulp-angular-templatecache': '^2.0.0',
+33 silly publish      'gulp-autoprefixer': '3.1.0',
+33 silly publish      'gulp-babel': '6.1.2',
+33 silly publish      'gulp-clone': '1.0.0',
+33 silly publish      'gulp-concat': '2.6.0',
+33 silly publish      'gulp-cssnano': '2.1.2',
+33 silly publish      'gulp-debug': '2.1.2',
+33 silly publish      'gulp-flatten': '^0.3.1',
+33 silly publish      'gulp-plumber': '1.1.0',
+33 silly publish      'gulp-rename': '1.2.2',
+33 silly publish      'gulp-sass': '2.3.2',
+33 silly publish      'gulp-sourcemaps': '1.6.0',
+33 silly publish      'gulp-template': '4.0.0',
+33 silly publish      'gulp-wrap': '0.11.0',
+33 silly publish      'gulp-zip': '3.1.0',
+33 silly publish      'http-response-object': '1.1.0',
+33 silly publish      listdirs: '3.0.0',
+33 silly publish      lodash: '4.16.4',
+33 silly publish      'merge-stream': '1.0.0',
+33 silly publish      minimist: '1.2.0',
+33 silly publish      prompt: '1.0.0',
+33 silly publish      request: '2.72.0',
+33 silly publish      'require-dir': '0.3.0',
+33 silly publish      'run-sequence': '1.2.1',
+33 silly publish      shelljs: '0.6.0',
+33 silly publish      'tar-fs': '1.13.0',
+33 silly publish      protractor: '5.0.0',
+33 silly publish      'fs-extra': '2.1.2',
+33 silly publish      'protractor-image-comparison': '1.2.3' },
+33 silly publish   engines: { node: '>=4.2' },
+33 silly publish   readme: '\r\n\r\n\r\n# The Primo New UI Customization Workflow Development Environment\r\n\r\n\r\n## Structure\r\n\r\n- <b>gulp directory</b> : holds the various build scripts for the environment and the  <b>config.js</b> configuration file in which your target proxy-server must be defined.\r\n\r\n- <b>node_modules directory</b> : holds the various third-party modules that are required to run the system. These modules are defined in the <b>package.json</b> file.\r\n\r\n- <b>packages directory</b> : once your development package is ready you will be able to build it using the `gulp create-package` command that will create the zipped package file you define in this folder\r\n\r\n- <b>primo-explore directory</b> : consists of 2 directories :\r\n   1. <b>custom</b> : - where you will place your customization packages\r\n   2. <b>tmp</b> : just a place to hold some of your temporary files\r\n\r\n## Overview\r\n\r\nThe development package allows you to configure the following page components (follow the links for details):\r\n\r\n- [CSS](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/css "css documentation")\r\n\r\n- [HTML](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/html "html documentation")\r\n\r\n- [Images](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/img "images documentation")\r\n\r\n- [JavaScript](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/js "javascript documentation")\r\n\r\nFor each configuration-type, or for every different Primo View, there should be a specified folder named after the View (which adheres to the established directory structure) in the `primo-explore/custom` package folder.\r\n\r\nThis custom View folder can be downloaded from your Primo Back Office, by following `Primo Home > Primo Utilities > UI customization Package Manager`, or started fresh from the [primo-explore-package GitHub repository](https://github.com/ExLibrisGroup/primo-explore-package "primo-explore-package repository"). (The benefit of using this repository is that in each folder you will find a specific README.md file containing recipes and examples.)\r\n\r\n\r\n## Installation\r\n\r\n1.  Download the project from this repository and place it on your computer\r\n\r\n2.  Unzip the file you downloaded to a preferred development project folder location\r\n\r\n3.  Download and install the [latest LTS version of Node](https://nodejs.org/en/download/)\r\n\r\n4.  From command line, run the command : `npm install npm@3.3.12 -g`\r\n\r\n5.  Restart your computer\r\n\r\n6.  From command line, run the command : `npm install -g gulp`\r\n\r\n7.  In a <b>new</b> command line window, navigate to the project base directory (`cd \\path\\to\\your\\project\\folder\\primo-explore-devenv`)\r\n\r\n8.  From command line, run the command : `npm install` (This should install all node modules needed for gulp.)\r\n\r\n    ![npm install image](./help_files/npmInstall.png "Running npm install")\r\n\r\n9.  Edit Gulp configuration file\'s <i>proxy server</i> setting, found at <b>gulp/config.js</b> : `var PROXY_SERVER = http://your-server:your-port` (Make sure to use your real Sandbox or Production Primo Front-End URL.) Note that for SSL environments (HTTPS) define the server as: `var PROXY_SERVER = https://your-server:443`\r\n\r\n10. Populate your custom View package folder in the custom package folder ("...primo-explore\\custom"), by either downloading the view code files from your Primo Back Office or using the [primo-explore-package GitHub repository](https://github.com/ExLibrisGroup/primo-explore-package "primo-explore-package repository")) to start a new package folder. (if you have already defined a view package and loaded it to the BO - make sure you download it or else you will not see, and may overwrite, your previous changes.)\r\n\r\n   - If your custom view package folder were to be called "Auto1" then your development environment directory tree should look similar to this: \r\n   ![Directory tree image](./help_files/direcoryTree.png "Directory tree")\r\n   \r\n   - <b>IMPORTANT:</b> The name of your custom view package folder must match an <i>existing</i> view on the proxy server being referenced or the Gulp server will not function properly. For development from scratch, be sure to first create (or copy) a view using the Primo Back Office View Wizard; then you can accomplish your customizations locally using this document.\r\n    \r\n11. Start your code customizations : \r\n\r\n   - From command line, go to your custom view package folder : `cd primo-explore\\custom\\VIEW_CODE`\r\n\r\n   - From command line, run the command : `gulp run --view <the VIEW_CODE folder>` (This will start your local server.)\r\n   \r\n     (For example, running `gulp run --view Auto1` will start the environment taking the customizations from the <b>Auto1</b> folder.)\r\n     \r\n     ![Server Startup Image](./help_files/serverStartup.png "Server Startup")\r\n\r\n   - Open a browser and type in the following URL : `localhost:8003/primo-explore/?vid=your-view-code`  (Example: http://localhost:8003/primo-explore/search?vid=Auto1)\r\n\r\n   -  Now you should be able to to your customizations with real searches and results, from your previously defined proxy-server. Note: once you start working with this environment, you will discover that the best results are achieved by working in your browser\'s incognito mode; or you can clear your browser cache before you start the Gulp server.\r\n   \r\n   ![Env up Image](./help_files/searchResults.png "Env up")\r\n\r\n   -  You can get immediate feedback on your code changes by refreshing the browser.\r\n\r\n   -  Perform your changes according to the documentation/examples in:\r\n\r\n      - [CSS](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/css "css documentation")\r\n\r\n      - [HTML](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/html "html documentation")\r\n\r\n      - [Images](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/img "images documentation")\r\n\r\n      - [JavaScript](https://github.com/ExLibrisGroup/primo-explore-package/tree/master/VIEW_CODE/js "javascript documentation")\r\n\r\n\r\n\r\n## Publishing packages\r\n\r\nOnce you finish customizing the package, you can zip up that directory and upload it using the Primo BackOffice.\r\n\r\n1. In a command line window, navigate to the project base directory : `cd \\path\\to\\your\\project\\folder\\primo-explore-devenv`\r\n\r\n2. From command line, run the command : `gulp create-package` You will be prompted with a menu specifying all of the possible packages you can build, such as :\r\n\r\n    ![Create Package Image](./help_files/createPackage.png "Create Package up")\r\n\r\n    ![Package Image](./help_files/packages.png "Package up")\r\n\r\n3. Log into Primo Back Office and navigate to the <b>UI customization Package manager</b> section : `Primo Home > Primo Utilities > UI customization Package Manager`\r\n\r\n4. Use the file <b>browse</b> button to find and upload the new zipped package file. (Located in the "\\path\\to\\your\\project\\folder\\primo-explore-devenv\\package" directory.)\r\n\r\n    ![BO Image](./help_files/bo.png "BO up")\r\n\r\n5. Don\'t forget to <b>deploy</b> your changes\r\n',
+33 silly publish   readmeFilename: 'README.md',
+33 silly publish   gitHead: '308536b7f3a405b7a3f3f1e2d1f50fbbcb42b2c9',
+33 silly publish   _id: 'primo-explore-app-store@0.0.1',
+33 silly publish   scripts: {},
+33 silly publish   _shasum: 'e4ad387a6174efffd4a241cf5ae6f96fefa5adda',
+33 silly publish   _from: 'primo-explore-app-store@*',
+33 silly publish   _resolved: 'file:primo-explore-devenv' }
+34 info lifecycle primo-explore-app-store@0.0.1~prepublish: primo-explore-app-store@0.0.1
+35 silly lifecycle primo-explore-app-store@0.0.1~prepublish: no script for prepublish, continuing
+36 verbose getPublishConfig undefined
+37 silly mapToRegistry name primo-explore-app-store
+38 silly mapToRegistry using default registry
+39 silly mapToRegistry registry https://registry.npmjs.org/
+40 silly mapToRegistry uri https://registry.npmjs.org/primo-explore-app-store
+41 verbose publish registryBase https://registry.npmjs.org/
+42 silly publish uploading C:\Users\noama\AppData\Roaming\npm-cache\primo-explore-app-store\0.0.1\package.tgz
+43 verbose request uri https://registry.npmjs.org/primo-explore-app-store
+44 verbose request sending authorization for write operation
+45 info attempt registry request try #1 at 10:30:48 AM
+46 verbose request using bearer token for auth
+47 http request PUT https://registry.npmjs.org/primo-explore-app-store
+48 http 403 https://registry.npmjs.org/primo-explore-app-store
+49 verbose headers { 'content-type': 'application/json',
+49 verbose headers   'cache-control': 'max-age=300',
+49 verbose headers   'content-length': '91',
+49 verbose headers   'accept-ranges': 'bytes',
+49 verbose headers   date: 'Wed, 01 Nov 2017 08:31:15 GMT',
+49 verbose headers   via: '1.1 varnish',
+49 verbose headers   connection: 'keep-alive',
+49 verbose headers   'x-served-by': 'cache-lhr6336-LHR',
+49 verbose headers   'x-cache': 'MISS',
+49 verbose headers   'x-cache-hits': '0',
+49 verbose headers   'x-timer': 'S1509525049.573412,VS0,VE27417',
+49 verbose headers   vary: 'Accept-Encoding, Accept' }
+50 verbose request invalidating C:\Users\noama\AppData\Roaming\npm-cache\registry.npmjs.org\primo-explore-app-store on PUT
+51 error publish Failed PUT 403
+52 verbose stack Error: You cannot publish over the previously published version 0.0.1. : primo-explore-app-store
+52 verbose stack     at makeError (C:\Users\noama\AppData\Roaming\npm\node_modules\npm\node_modules\npm-registry-client\lib\request.js:264:12)
+52 verbose stack     at CachingRegistryClient.<anonymous> (C:\Users\noama\AppData\Roaming\npm\node_modules\npm\node_modules\npm-registry-client\lib\request.js:252:14)
+52 verbose stack     at Request._callback (C:\Users\noama\AppData\Roaming\npm\node_modules\npm\node_modules\npm-registry-client\lib\request.js:172:14)
+52 verbose stack     at Request.self.callback (C:\Users\noama\AppData\Roaming\npm\node_modules\npm\node_modules\request\request.js:198:22)
+52 verbose stack     at emitTwo (events.js:106:13)
+52 verbose stack     at Request.emit (events.js:191:7)
+52 verbose stack     at Request.<anonymous> (C:\Users\noama\AppData\Roaming\npm\node_modules\npm\node_modules\request\request.js:1082:10)
+52 verbose stack     at emitOne (events.js:101:20)
+52 verbose stack     at Request.emit (events.js:188:7)
+52 verbose stack     at IncomingMessage.<anonymous> (C:\Users\noama\AppData\Roaming\npm\node_modules\npm\node_modules\request\request.js:1009:12)
+53 verbose statusCode 403
+54 verbose pkgid primo-explore-app-store
+55 verbose cwd C:\dev\primo-app-store
+56 error Windows_NT 6.1.7601
+57 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Users\\noama\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js" "publish" "primo-explore-app-store"
+58 error node v6.9.4
+59 error npm  v3.3.12
+60 error code E403
+61 error You cannot publish over the previously published version 0.0.1. : primo-explore-app-store
+62 error If you need help, you may report this error at:
+62 error     <https://github.com/npm/npm/issues>
+63 verbose exit [ 1, true ]
