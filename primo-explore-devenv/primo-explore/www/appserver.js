@@ -88,7 +88,7 @@ class Server {
         var config={data:
         this.colors
         };
-        this.$http.post('http://localhost:8004/colors',config).then(function(resp){
+        this.$http.post('http://ec2-13-59-9-236.us-east-2.compute.amazonaws.com:8004/colors',config).then(function(resp){
             if(resp.status === 200){
                 console.log('theme created');
             }
@@ -100,7 +100,7 @@ class Server {
         var config={params:
         this.config
         };
-        this.$http.get('http://localhost:8004/start',config).then(function(resp){
+        this.$http.get('http://ec2-13-59-9-236.us-east-2.compute.amazonaws.com:8004/start',config).then(function(resp){
             if(resp.status === 200){
                 _this.up = true;
             }
@@ -115,7 +115,7 @@ class Server {
         var config={params:
         this.config
         };
-        this.$http.get('http://localhost:8004/feature',config).then(function(resp){
+        this.$http.get('http://ec2-13-59-9-236.us-east-2.compute.amazonaws.com:8004/feature',config).then(function(resp){
             console.log(resp.data + "noam");
         });
         console.log('1111');
