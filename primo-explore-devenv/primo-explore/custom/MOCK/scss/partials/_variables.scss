@@ -65,13 +65,13 @@ $alert-hue1: darken(desaturate(adjust-hue($alert, 0.3074), 15.3043), 2.9412);
 $disabled: #aaa;
 $courseColor: #55909B;
 
-$primary: #8080c0;
+$primary: #ffff80;
 $primary-hue1: darken($primary, 3%);
 $primary-hue2: darken($primary, 5%);
 $primary-hue3: darken($primary-hue2, 2%);
 $primary-hue4: darken($primary, 10%);
 
-$secondary: #00ffff;
+$secondary: #A9CDD6;
 $secondary-hue1: darken(saturate(adjust-hue($secondary, -6.5946), 9.1452), 26.2745); 
 $secondary-hue2: darken($secondary, 20%);
 

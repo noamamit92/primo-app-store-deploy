@@ -35,9 +35,8 @@ module.exports.getCustimazationObject = function (vid,appName) {
         var viewPackage = packages.filter((package) => package !== base_path + 'CENTRAL_PACKAGE');
     }
 
-
     viewPackage = viewPackage || viewPackage[0];
-    console.log(viewPackage);
+    console.log('ppp'+viewPackage);
     if(viewPackage.length ===0 ){
         viewPackage = '';
     }
@@ -177,10 +176,10 @@ module.exports.getCustimazationObject = function (vid,appName) {
 }
 
 
-module.exports.proxy_function = function () {
-    var proxyServer = config.PROXY_SERVER;
-    var res = new Response(200, {'content-type': 'text/css'}, new Buffer(''), '');
+module.exports.proxy_function = function (viewForProxy,urlForProxy) {
+    var proxyServer = urlForProxy || config.PROXY_SERVER;
 
+    console.log('noam 2222' + viewForProxy + urlForProxy);
 
 
 

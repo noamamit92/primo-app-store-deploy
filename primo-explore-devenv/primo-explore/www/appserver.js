@@ -12,26 +12,18 @@ var gulp = require('gulp');*/
 
 
 class Server {
-    constructor($mdToast,$http) {
+    constructor($mdToast,$http,$sce) {
 
         this.$mdToast = $mdToast;
         this.up = false;
         this.$http = $http;
-
+        this.$sce = $sce;
         //this.startServer();
         //this.up = true;
         this.config={"view":"NORTH",
-            "url": "http://primo-demo.exlibrisgroup.com:1701"}
-        this.colors = {
-            "primary": "#53738C",
-            "secondary" : "#A9CDD6",
-            "backgroundColor" : "white",
-            "links": "#5C92BD",
-            "warning": "tomato",
-            "positive": "#0f7d00",
-            "negative": "gray",
-            "notice": "#e08303"
-        };
+            "url": "http://primo-demo.exlibrisgroup.com:1701",
+            "dirName": "MOCK"
+        }
         this.features = [
             {
                 face : 'https://avatars1.githubusercontent.com/u/8035487?s=460&v=4',
@@ -57,7 +49,7 @@ class Server {
                 when: '3:08PM',
                 notes: "Integrating a Google maps iframe to each location item based on the callNumber",
                 linkGit: "https://github.com/noamamit92/primo-explore-location-item-after-google-maps-demo",
-                npmid: "https://github.com/noamamit92/primo-explore-location-item-after-google-maps-demo"
+                npmid: "primo-explore-location-item-after-protractor-demo"
             },
             {
                 face : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrMmvgnyOTSLXKKifrhwmwZLmjsdq_9qsjf5hPAecOYp-jJEbc',
@@ -78,6 +70,16 @@ class Server {
                 npmid: "https://github.com/noamamit92/primo-explore-location-item-after-google-maps-demo"
             },
         ];
+        this.colors = {
+            "primary": "#53738C",
+            "secondary" : "#A9CDD6",
+            "backgroundColor" : "white",
+            "links": "#5C92BD",
+            "warning": "tomato",
+            "positive": "#0f7d00",
+            "negative": "gray",
+            "notice": "#e08303"
+        };
     }
 
     getConfig(){
@@ -85,12 +87,26 @@ class Server {
     }
     createTheme(){
         var _this = this;
-        var config={data:
-        this.colors
+        var config={data: {
+            colors: this.colors,
+            conf: this.config
+            }
         };
-        this.$http.post('http://ec2-13-59-9-236.us-east-2.compute.amazonaws.com:8004/colors',config).then(function(resp){
+        this.$http.post('http://localhost:8004/colors',config).then(function(resp){
             if(resp.status === 200){
                 console.log('theme created');
+            }
+
+        });
+    }
+
+    restart(){
+        var _this = this;
+        var config={params:
+        this.config
+        };
+        this.$http.get('http://localhost:8004/restart',config).then(function(resp){
+            if(resp.status === 200){
             }
 
         });
@@ -100,8 +116,9 @@ class Server {
         var config={params:
         this.config
         };
-        this.$http.get('http://ec2-13-59-9-236.us-east-2.compute.amazonaws.com:8004/start',config).then(function(resp){
+        this.$http.get('http://localhost:8004/start',config).then(function(resp){
             if(resp.status === 200){
+                _this.config.dirName = resp.data.dirName;
                 _this.up = true;
             }
 
@@ -111,14 +128,14 @@ class Server {
 
     }
     addFeature(npmid){
-        this.config={"id":npmid};
+        this.config={"id":npmid,"dirName":this.config.dirName};
         var config={params:
         this.config
         };
-        this.$http.get('http://ec2-13-59-9-236.us-east-2.compute.amazonaws.com:8004/feature',config).then(function(resp){
-            console.log(resp.data + "noam");
+        this.$http.get('http://localhost:8004/feature',config).then(function(resp){
+
         });
-        console.log('1111');
+
     }
     chooseZip() {
         /*let files = dialog.showOpenDialog(remote.getCurrentWindow(),
@@ -135,13 +152,15 @@ class Server {
 
     }
 
-
+        getIframeUrl(){
+            return this.$sce.trustAsResourceUrl('http://localhost:8003/primo-explore/search/?vid='+this.config.view+'&dirName='+this.config.dirName+'&url='+this.config.url);
+        }
         isUp(){
             return this.up;
         }
         getUrl() {
             if(this.up){
-                return 'http://localhost:8003/primo-explore/search/?vid=NORTH';
+                return 'http://localhost:8004//primo-explore/search/?vid=NORTH';
             }
                 
             return '';

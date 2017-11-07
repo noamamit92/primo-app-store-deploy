@@ -31,6 +31,7 @@
                             <md-button ng-click="$ctrl.start()" ng-if="!$ctrl.isUp()">Start server</md-button>
 
 
+
                         </md-content>
 
                     </div>
@@ -123,8 +124,10 @@
                 </md-content>
             </md-tab>
         </md-tabs>
+
         <div style="min-width:600px" flex="40">
-            <iframe style="min-width:600px;min-height:950px" ng-if="$ctrl.isUp()" src="http://ec2-13-59-9-236.us-east-2.compute.amazonaws.com:8003/primo-explore/search/?vid=NORTH"></iframe>
+            <iframe style="min-width:600px;min-height:780px" ng-if="$ctrl.isUp()" src="{{::$ctrl.getIframeUrl()}}"></iframe>
+            <md-button ng-click="$ctrl.restart()" ng-if="$ctrl.isUp()">ReStart server(wait 10 seconds after changes)</md-button>
         </div>
     </md-content>
 </div>

@@ -1,7 +1,7 @@
 'use strict';
 
-let customFile =  'custom.js';
 let customModuleFile =  'custom.module.js';
+let customFile =  'custom.js';
 let customCssFile =  'custom1.css';
 let mainFile = 'main.js';
 
@@ -141,7 +141,7 @@ var SERVERS = {
  *   var PROXY_SERVER = 'http://abc-primo.hosted.exlibrisgroup.com'
  *   var PROXY_SERVER = 'https://abc-primo.hosted.exlibrisgroup.com:443'
  */
-var PROXY_SERVER = 'http://primo-demo.exlibrisgroup.com:1701';
+    var PROXY_SERVER = 'http://primo-demo.exlibrisgroup.com:1701';
 
 
 let buildParams = {

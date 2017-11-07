@@ -9,10 +9,10 @@ const unzip = require('unzip')
 const template = require('lodash/template');
 const bodyParser = require('body-parser');
 const childP = require('child_process');
+const configG = require('../config');
 /*const requireNPM = require('require-npm').decorate(require);*/
-/*const rimrafAsync = Promise.promisify(require('rimraf'));
+const rimrafAsync = Promise.promisify(require('rimraf'));
  const streamToPromise = require('./streamToPromise');
- var gulp = require('gulp');*/
 
 gulp.task('serve', function() {
     //1. serve with default settings
@@ -21,6 +21,11 @@ gulp.task('serve', function() {
 
     //2. serve at custom port
     buildByBrowserify();
+
+    if (gulp.tasks.run) {
+        gulp.start('run')
+    }
+
     //var server = gls.static(['primo-explore/www','primo-explore/api'], 8888);
     const express = require('express')
     const appS = express()
@@ -29,21 +34,32 @@ gulp.task('serve', function() {
 
 
     appS.get('/feature', function (req, res) {
-        console.log('22222');
-        console.log(req.query);
-        childP.exec('npm install --prefix primo-explore/custom/MOCK '+req.query.id);
+        childP.exec('npm install --prefix primo-explore/custom/'+req.query.dirName+' '+req.query.id);
+
         var response = {data:'noam'};
         res.send(response);
     })
+    appS.get('/restart',function(req,res){
+        if(!process.cwd().includes("primo-explore-devenv")) {
+            process.chdir("primo-explore-devenv");
+        }
+        configG.setView(req.query.dirName);
 
+        gulp.start('custom-js')
+        gulp.start('setup_watchers')
+    })
 
     appS.post('/colors', function (req, res) {
-        var colors = req.body.data;
-        console.log('88888'+colors.primary);
-        var baseDir = 'primo-explore/custom/MOCK';
-        process.argv = ["","", "","--view=MOCK"];
+        var colors = req.body.data.colors;
+        var conf = req.body.data.conf;
+        var baseDir = 'primo-explore/custom/'+conf.dirName;
+        process.argv = ["","", "","--view="+conf.dirName];
 
-
+        console.log('aaa'+baseDir);
+        if(!process.cwd().includes("primo-explore-devenv")) {
+            process.chdir("primo-explore-devenv");
+        }
+        configG.setView(conf.dirName);
         fs.writeFileAsync(baseDir+'/colors.json', JSON.stringify(colors), { encoding: 'utf-8' })
             .then(() => {
             gulp.start('app-css')
@@ -56,26 +72,43 @@ gulp.task('serve', function() {
 
 
     appS.get('/start', function (req, res) {
-        if (gulp.tasks.run) {
-            var confObj = {"view":req.query.view,
-             "url": req.query.url}
+        var confObj = {"view":req.query.view,
+            "url": req.query.url}
+        var d = new Date();
+        var n = d.getTime();
 
-            let p3 = fs.readFileAsync("gulp/config.js.tmpl", { encoding: 'utf-8' })
-                    .then((content) => {
-                    let compiled = template(content, { interpolate: /<%=([\s\S]+?)%>/g });
-            return compiled({ 'proxyServer': confObj.url });
-
-        }).then((compiledContent) => {
-                return fs.writeFileAsync("gulp/config.js", compiledContent, { encoding: 'utf-8' })
-
-
-            }).then(()=>{
-                gulp.start('run')
+        //create a directory from MOCK
+        let readStream = fs.createReadStream('templatePackage/VIEW_CODE.zip');
+        /*writeStream2 = fstream.Writer({
+            path: path.resolve(__dirname, '../../primo-explore/custom/' + n),
+            type: 'Directory'
+        });*/
+        let writeStream = fstream.Writer({
+            path: path.resolve(__dirname, '../../tmp'),
+            type: 'Directory'
+        });
+        let p1 = rimrafAsync('../../tmp')
+                .then(
+                    () => {
+                let zipStream = readStream
+                    .pipe(unzip.Parse())
+                    .pipe(writeStream)
+                return streamToPromise(zipStream)
             });
+        //let p2 = rimrafAsync("primo-explore-devenv/primo-explore/custom/" + n);
+        Promise.join(p1).then(() => {
+            return fs.renameAsync("./tmp/VIEW_CODE", "primo-explore/custom/" + n);
 
-        }
-        var response = {status:'200'};
-        res.send(response);
+
+
+
+
+    })
+
+
+
+        res.setHeader('Content-Type', 'application/json');
+        res.send(JSON.stringify({status:'200',dirName:n}));
     })
 
     appS.listen(8004, function () {

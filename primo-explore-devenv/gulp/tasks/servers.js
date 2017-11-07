@@ -11,9 +11,10 @@ let primoProxy = require('../primoProxy');
 let glob = require('glob');
 let prompt = require('prompt');
 let runSequence = require('run-sequence');
-
-
-
+const bodyParser = require('body-parser');
+let viewForProxy;
+let urlForProxy;
+let dirForProxy;
 
 gulp.task('setup_watchers', ['watch-js', 'watch-custom-scss', 'watch-css'], () => {
     gulp.watch(config.buildParams.customPath(),() => {
@@ -25,7 +26,7 @@ gulp.task('setup_watchers', ['watch-js', 'watch-custom-scss', 'watch-css'], () =
     });
 });
 
-
+let viewProxy = {};
 
 gulp.task('connect:primo_explore', function() {
     let appName = 'primo-explore';
@@ -34,6 +35,28 @@ gulp.task('connect:primo_explore', function() {
         middleware:[
                 function(req,res,next) {
                     let confPath = config.getVe() ? '/primaws/rest/pub/configuration' : '/primo_library/libweb/webservices/rest/v1/configuration';
+
+                    var regex = /[?&]([^=#]+)=([^&#]*)/g,
+                        url = req.url,
+                        params = {},
+                        match;
+                    while(match = regex.exec(url)) {
+                        params[match[1]] = match[2];
+                        if(match[1] === 'vid'){
+                            if(!viewForProxy)
+                                viewForProxy = params[match[1]];
+                        }
+                        if(match[1] === 'url'){
+                            if(!urlForProxy)
+                                urlForProxy = params[match[1]];
+                        }
+                        if(match[1] === 'dirName'){
+                            if(!dirForProxy)
+                                dirForProxy = params[match[1]];
+                        }
+
+
+                    }
 
 
                     let fixConfiguration = function(res,res1){
@@ -46,10 +69,10 @@ gulp.task('connect:primo_explore', function() {
                         });
 
                         res1.on("end", function(){
-                            let vid = config.view() || '';
+
+                            let vid = dirForProxy || config.view() || '';
                             let customizationProxy = primoProxy.getCustimazationObject(vid,appName);
                             let newBodyObject = JSON.parse(body);
-                            console.log(customizationProxy);
                             newBodyObject.customization = customizationProxy;
                             let newBody = JSON.stringify(newBodyObject);
 
@@ -62,9 +85,10 @@ gulp.task('connect:primo_explore', function() {
                     }
                     if(req.url.startsWith(confPath)) {
                         //console.log(util.inspect(req, {}));
-                        let url = config.PROXY_SERVER+req.url;
-                        let base = config.PROXY_SERVER.replace('http:\/\/','').replace('https:\/\/','');
-                        let method = config.PROXY_SERVER.split('://')[0];
+                        let proxyUrl = urlForProxy || config.PROXY_SERVER;
+                        let url = proxyUrl+req.url;
+                        let base = proxyUrl.replace('http:\/\/','').replace('https:\/\/','');
+                        let method = proxyUrl.split('://')[0];
                         let parts = base.split(':');
                         let hostname = parts[0];
                         let port = parts[1];
@@ -83,6 +107,7 @@ gulp.task('connect:primo_explore', function() {
                         if(method === 'https') {
                             requestObject = https;
                         }
+
                         let req2 = requestObject.request(options, (res1) => {
                             fixConfiguration(res, res1);
                         });
@@ -96,11 +121,15 @@ gulp.task('connect:primo_explore', function() {
 
                     }
                     else {
+                        if(!viewProxy[viewForProxy]){
+                            viewProxy[viewForProxy] = urlForProxy;
+                        }
                         next();
                     }
 
                 },
-                primoProxy.proxy_function()],
+                    primoProxy.proxy_function(viewForProxy,urlForProxy)
+                ],
         port: 8003,
         baseDir: appName
     });
